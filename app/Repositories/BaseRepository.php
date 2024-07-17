@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Contracts\DTO\DTOInterface;
 use App\Contracts\Repositories\BaseRepositoryInterface;
 
 use App\Exceptions\BadRequestException;
@@ -31,7 +32,7 @@ abstract class BaseRepository implements BaseRepositoryInterface
         $model = $this->app->make($this->model());
 
         if (!$model instanceof Model) {
-            throw new BadRequestExceptio("Class {$this->model()} must be an instance of Illuminate\\Database\\Eloquent\\Model");
+            throw new BadRequestException("Class {$this->model()} must be an instance of Illuminate\\Database\\Eloquent\\Model");
         }
 
         return $this->model = $model;
@@ -87,5 +88,17 @@ abstract class BaseRepository implements BaseRepositoryInterface
     public function findBy(string $field, mixed $value, array $columns = ['*']): ?Model
     {
         return $this->model->where($field, '=', $value)->first($columns);
+    }
+
+    /**
+     * create
+     *
+     * @param DTOInterface $attributes
+     * @return Model
+     */
+    public function create(DTOInterface $attributes): Model
+    {
+        $data = ( @json_decode(json_encode($attributes), true));
+        return $this->model->create($data);
     }
 }
