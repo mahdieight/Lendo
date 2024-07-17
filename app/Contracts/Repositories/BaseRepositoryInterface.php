@@ -2,6 +2,7 @@
 
 namespace App\Contracts\Repositories;
 
+use App\Contracts\DTO\DTOInterface;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
@@ -12,4 +13,7 @@ interface BaseRepositoryInterface
     public function find(int $id, array $columns = ['*'], bool $withTrashed = false): ?Model;
 
     public function findBy(string $field, mixed $value, array $columns = ['*']): ?Model;
+
+    public function create(DTOInterface $attributes): Model;
+
 }
