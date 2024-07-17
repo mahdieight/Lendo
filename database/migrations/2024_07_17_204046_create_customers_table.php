@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('bank_account_number', 16)->nullable();
             $table->enum('status', CustomerStatusEnum::values(), 7);
             $table->boolean('complete_info');
-            $table->string('mobile', 12);
+            $table->string('mobile', 12)->unique();
             $table->string('name', 100);
             $table->string('password');
             $table->softDeletes();
