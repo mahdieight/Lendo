@@ -3,6 +3,7 @@
 namespace App\Dto\Auth;
 
 use App\Contracts\DTO\DTOInterface;
+use Illuminate\Support\Facades\Hash;
 
 class CustomerRegisterDto implements DTOInterface
 {
@@ -19,7 +20,7 @@ class CustomerRegisterDto implements DTOInterface
         return new self(
             name: $data['name'],
             mobile: $data['mobile'],
-            password: $data['password'],
+            password: Hash::make($data['password']),
             bank_account_number: @$data['bank_account_number']
         );
     }
