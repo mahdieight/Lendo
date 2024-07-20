@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Contracts\DTO\DTOInterface;
+use App\Contracts\DTO\DtoInterface;
 use App\Contracts\Repositories\BaseRepositoryInterface;
 
 use App\Exceptions\BadRequestException;
@@ -93,10 +93,10 @@ abstract class BaseRepository implements BaseRepositoryInterface
     /**
      * create
      *
-     * @param DTOInterface $attributes
+     * @param DtoInterface $attributes
      * @return Model
      */
-    public function create(DTOInterface $attributes): Model
+    public function create(DtoInterface $attributes): Model
     {
         $data = ( @json_decode(json_encode($attributes), true));
         return $this->model->create($data);

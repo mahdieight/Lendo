@@ -2,10 +2,10 @@
 
 namespace App\Dto\Auth;
 
-use App\Contracts\DTO\DTOInterface;
+use App\Contracts\DTO\DtoInterface;
 use Illuminate\Support\Facades\Hash;
 
-class CustomerRegisterDto implements DTOInterface
+class CustomerRegisterDto implements DtoInterface
 {
     public function __construct(
         public readonly string $name,

@@ -2,9 +2,9 @@
 
 namespace App\Dto\Auth;
 
-use App\Contracts\DTO\DTOInterface;
+use App\Contracts\DTO\DtoInterface;
 
-class CustomerLoginDto implements DTOInterface
+class CustomerLoginDto implements DtoInterface
 {
     public function __construct(
         public readonly string $mobile,

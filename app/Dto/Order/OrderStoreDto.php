@@ -2,10 +2,10 @@
 
 namespace App\Dto\Order;
 
-use App\Contracts\DTO\DTOInterface;
+use App\Contracts\DTO\DtoInterface;
 use Illuminate\Support\Facades\Auth;
 
-class OrderStoreDto implements DTOInterface
+class OrderStoreDto implements DtoInterface
 {
     public function __construct(
         public readonly int $amount,

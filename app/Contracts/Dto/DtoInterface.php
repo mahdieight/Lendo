@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Contracts\DTO;
+namespace App\Contracts\Dto;
 
-interface DTOInterface
+interface DtoInterface
 {
     public static function fromArray(array $data);
 }
