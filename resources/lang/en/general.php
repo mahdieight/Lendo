@@ -1,8 +1,5 @@
 <?php
 
-use App\Enums\General\GenderEnum;
-use App\Enums\General\LangEnum;
-
 return [
 
     /*
