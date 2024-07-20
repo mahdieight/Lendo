@@ -21,4 +21,9 @@ class Order extends Model
         'invoice_count',
         'status',
     ];
+
+    public function customer()
+    {
+        return $this->belongsTo(Customer::class);
+    }
 }

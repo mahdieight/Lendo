@@ -29,4 +29,14 @@ class Customer extends Authenticatable
     protected $hidden = [
         'password',
     ];
+
+
+    protected $casts = [
+        "complete_info"   => "boolean",
+    ];
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
 }
