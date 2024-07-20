@@ -42,6 +42,10 @@ class Handler extends ExceptionHandler
             return $this->renderError($exception, 400 , null , [] , $exception->data);
         }
 
+        if ($exception instanceof ForbiddenAccessException) {
+            return $this->renderError($exception, 403 , null , [] , $exception->data);
+        }
+        
         if ($exception instanceof AuthenticationException) {
             return $this->renderError($exception, 401);
         }
