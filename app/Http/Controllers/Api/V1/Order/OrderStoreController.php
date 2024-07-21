@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Api\V1\Order;
 
 use App\Dto\Order\OrderStoreDto;
-use App\Events\OrderCreated;
 use App\Facades\Response;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\V1\Order\OrderStoreRequest;
@@ -22,7 +21,7 @@ class OrderStoreController extends Controller
         $orderDTO = OrderStoreDto::fromArray($request->all());
 
         $order = $this->service->createOrder($orderDTO);
-        
+
         return Response::message('order.messages.order_was_created_successfully')->status(HttpResponse::HTTP_CREATED)->data(new OrderResource($order));
     }
 }
