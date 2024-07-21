@@ -22,9 +22,7 @@ class OrderStoreController extends Controller
         $orderDTO = OrderStoreDto::fromArray($request->all());
 
         $order = $this->service->createOrder($orderDTO);
-
-        OrderCreated::dispatch($order);
-
+        
         return Response::message('order.messages.order_was_created_successfully')->status(HttpResponse::HTTP_CREATED)->data(new OrderResource($order));
     }
 }

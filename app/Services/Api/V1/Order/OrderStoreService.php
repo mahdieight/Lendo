@@ -20,6 +20,7 @@ class OrderStoreService
         if (Auth()->user()->status != CustomerStatusEnum::NORMAL) throw new ForbiddenAccessException('order.errors.customer_is_inactive');
 
         $order = $this->repository->create($data);
+        OrderCreated::dispatch($order);
 
         return $order;
     }
