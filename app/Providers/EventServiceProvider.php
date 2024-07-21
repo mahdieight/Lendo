@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Events\OrderCreated;
+use App\Listeners\SendSmsOrderCreatedNotification;
 use App\Models\Customer;
 use App\Models\Order;
 use App\Observers\CustomerObserver;
@@ -20,6 +22,9 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         Registered::class => [
             SendEmailVerificationNotification::class,
+        ],
+        OrderCreated::class => [
+            SendSmsOrderCreatedNotification::class,
         ],
     ];
 
